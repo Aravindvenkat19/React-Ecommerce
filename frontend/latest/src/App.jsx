@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ProductDetail from "./pages/ProductDetail.jsx";
 import {ToastContainer} from 'react-toastify'
 import Cart from "./pages/Cart.jsx";
+import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
   const [cartItems, setCartItems] = useState([]);

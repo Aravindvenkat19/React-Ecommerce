@@ -1,18 +1,21 @@
 const mongoose = require('mongoose');
 
+let isConnected = false;
+
 const connectDatabase = async () => {
-  if (mongoose.connection.readyState >= 1) {
-    return;
-  }
+  if (isConnected) return;
 
   try {
-    const con = await mongoose.connect(process.env.DB_URL, {
-      serverSelectionTimeoutMS: 5000, // Fail fast if the IP is wrong
+    const conn = await mongoose.connect(process.env.DB_URL, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
     });
-    console.log("MongoDB Connected to Host:", con.connection.host);
-  } catch (err) {
-    console.error("MongoDB Connection Error:", err);
-    throw err; // Re-throw so Vercel logs show the actual error
+
+    isConnected = true;
+    console.log('MongoDB connected:', conn.connection.host);
+  } catch (error) {
+    console.error('MongoDB connection failed:', error.message);
+    throw error;
   }
 };
 

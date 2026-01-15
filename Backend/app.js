@@ -14,8 +14,10 @@ const orders = require('./routes/order');
 connectDatabase();;
 
 app.use(express.json())
+
 app.use(cors({
     origin: (origin, callback) => {
+        // This allows any origin that makes a request to connect
         callback(null, true);
     },
     credentials: true

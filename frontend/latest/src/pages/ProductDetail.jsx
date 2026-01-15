@@ -8,12 +8,12 @@ const ProductDetail = ({cartItems,setCartItems}) => {
   const {id} = useParams();     
 
   useEffect(()=>{
-      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8000/api/v1';
+      const apiUrl = import.meta.env.VITE_API_URL;
   
       fetch(apiUrl+"/product/"+id)
       .then(res => res.json())
       .then(res => setProduct(res.product || res));
-    },[]);
+    },[id]);
 
     function addToCart(){
         const itemExist = cartItems.find((item) => item.product._id == product._id)

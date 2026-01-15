@@ -9,10 +9,7 @@ dotenv.config({path: path.join(__dirname, 'config','config.env')})
 const products = require('./routes/product');
 const orders = require('./routes/order');
 
-app.use(async (req, res, next) => {
-  await connectDatabase();
-  next();
-});
+await connectDatabase();;
 
 app.use(express.json())
 app.use(cors({

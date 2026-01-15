@@ -16,11 +16,11 @@ connectDatabase();;
 app.use(express.json())
 
 app.use(cors({
-    origin: (origin, callback) => {
-        // This allows any origin that makes a request to connect
+    origin: function (origin, callback) {
         callback(null, true);
     },
-    credentials: true
+    credentials: true,
+    optionsSuccessStatus: 200 // Some legacy browsers need this for 200 OK
 }));
 
 app.use('/api/v1',products);

@@ -19,4 +19,8 @@ const connectDatabase = async () => {
   }
 };
 
+app.get('/', (req, res) => {
+  res.send('Backend Server is running and connected to Database!');
+});
+
 module.exports = connectDatabase;

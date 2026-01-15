@@ -13,7 +13,7 @@ connectDatabase();
 
 app.use(express.json())
 app.use(cors({
-    origin : "https://react-frontend-ecommerce-phi.vercel.app/",
+    origin : "https://react-frontend-ecommerce-phi.vercel.app",
     credentials: true
 }));
 

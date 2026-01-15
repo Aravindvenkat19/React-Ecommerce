@@ -23,8 +23,8 @@ app.use(cors({
     optionsSuccessStatus: 200 // Some legacy browsers need this for 200 OK
 }));
 
-app.use('/api/v1',products);
-app.use('/api/v1',orders);
+app.use('/api/v1/products', products);
+app.use('/api/v1/orders', orders);
 
 // app.listen(process.env.PORT,()=>{
 //    console.log(`Server Listening to Port ${process.env.PORT} in ${process.env.NODE_ENV}`);

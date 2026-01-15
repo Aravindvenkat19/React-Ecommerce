@@ -25,4 +25,6 @@ app.use('/api/v1',orders);
 //    console.log(`Server Listening to Port ${process.env.PORT} in ${process.env.NODE_ENV}`);
 // });
 
+app.get('/', (req, res) => res.send('Server is live and connected.'));
+
 module.exports = app;

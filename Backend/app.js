@@ -15,10 +15,11 @@ connectDatabase();;
 
 app.use(express.json())
 app.use(cors({
-    origin : "https://react-frontend-ecommerce-fzqkqewg4-aravind-venkats-projects.vercel.app",
+    origin: (origin, callback) => {
+        callback(null, true);
+    },
     credentials: true
 }));
-
 
 app.use('/api/v1',products);
 app.use('/api/v1',orders);

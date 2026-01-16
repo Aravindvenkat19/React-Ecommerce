@@ -18,7 +18,7 @@ app.use(cors({
     credentials: true
 }));
 
-app.use('/api/v1/products', products);
+app.use('/api/v1', products);
 app.use('/api/v1/orders', orders);
 
 // app.listen(process.env.PORT,()=>{

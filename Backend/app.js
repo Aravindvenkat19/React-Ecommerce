@@ -25,12 +25,4 @@ app.use('/api/v1/orders', orders);
 //    console.log(`Server Listening to Port ${process.env.PORT} in ${process.env.NODE_ENV}`);
 // });
 
-app.use('*', (req, res) => {
-    res.status(200).json({
-        message: "Backend is reachable!",
-        receivedPath: req.originalUrl,
-        hint: "If you see this, your vercel.json is working, but your product routes need adjustment."
-    });
-});
-
 module.exports = app;

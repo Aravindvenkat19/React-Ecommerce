@@ -11,7 +11,15 @@ const Home = () => {
 
     fetch(`${apiUrl}/products?${searchParams}`)
     .then(res => res.json())
-    .then(res => setProducts(res.products || res));
+    then(res => {
+    // Only set products if the array exists in the response
+    if (res.products && Array.isArray(res.products)) {
+        setProducts(res.products);
+    } else {
+        // Fallback for different API response structures
+        setProducts(res);
+    }
+})
   },[searchParams]);
 
   return (

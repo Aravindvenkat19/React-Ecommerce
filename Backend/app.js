@@ -16,11 +16,8 @@ connectDatabase();;
 app.use(express.json())
 
 app.use(cors({
-    origin: function (origin, callback) {
-        callback(null, true);
-    },
-    credentials: true,
-    optionsSuccessStatus: 200 // Some legacy browsers need this for 200 OK
+    origin: "https://react-frontend-ecommerce-4bdrgmzkd-aravind-venkats-projects.vercel.app/",
+    credentials: true
 }));
 
 app.use('/api/v1/products', products);

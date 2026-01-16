@@ -9,7 +9,7 @@ const Home = () => {
   useEffect(()=>{
     const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8000/api/v1';
 
-    fetch(apiUrl+"/products?"+searchParams)
+    fetch(`${apiUrl}/products?${searchParams}`)
     .then(res => res.json())
     .then(res => setProducts(res.products || res));
   },[searchParams]);

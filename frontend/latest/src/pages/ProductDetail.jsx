@@ -8,9 +8,9 @@ const ProductDetail = ({cartItems,setCartItems}) => {
   const {id} = useParams();     
 
   useEffect(()=>{
-      const apiUrl = import.meta.env.VITE_API_URL;
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8000/api/v1';
   
-      fetch(apiUrl+"/product/"+id)
+      fetch(`${apiUrl}/product/${id}`)
       .then(res => res.json())
       .then(res => setProduct(res.product || res));
     },[id]);

@@ -14,11 +14,14 @@ connectDatabase();;
 app.use(express.json())
 
 app.use(cors({
-    origin: [
-        "https://react-frontend-ecommerce-phi.vercel.app",
-        "https://react-frontend-ecommerce-he03rjg4u-aravind-venkats-projects.vercel.app",
-        "https://react-ecommerce-omega-ochre.vercel.app"
-    ],
+    origin: function (origin, callback) {
+        // Allow local development or any of your Vercel deployment URLs
+        if (!origin || origin.includes("vercel.app") || origin.includes("localhost")) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
     credentials: true
 }));
 

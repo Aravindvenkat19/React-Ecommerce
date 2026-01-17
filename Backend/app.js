@@ -14,7 +14,11 @@ connectDatabase();;
 app.use(express.json())
 
 app.use(cors({
-    origin: "https://react-frontend-ecommerce-phi.vercel.app",
+    origin: [
+        "https://react-frontend-ecommerce-phi.vercel.app",
+        "https://react-ecommerce-omega-ochre.vercel.app",
+        "https://react-ecommerce-3u1v5ronx-aravind-venkats-projects.vercel.app"
+    ],
     credentials: true
 }));
 

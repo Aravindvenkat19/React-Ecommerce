@@ -10,16 +10,17 @@ const Home = () => {
     const apiUrl =
       import.meta.env.VITE_API_URL || "http://localhost:8000/api/v1";
 
-    fetch(`${apiUrl}/products?${searchParams}`).then((res) => res.json());
-    then((res) => {
-      // Only set products if the array exists in the response
-      if (res.products && Array.isArray(res.products)) {
-        setProducts(res.products);
-      } else {
-        // Fallback for different API response structures
-        setProducts(res);
-      }
-    });
+    fetch(`${apiUrl}/products?${searchParams}`).then((res) => res.json())
+    .then(res => {
+                // Only set products if the array exists in the response
+                if (res.products && Array.isArray(res.products)) {
+                    setProducts(res.products);
+                } else {
+                    // Fallback for different API response structures
+                    setProducts(res);
+                }
+            })
+            .catch(err => console.error("API Error:", err));
   }, [searchParams]);
 
   return (

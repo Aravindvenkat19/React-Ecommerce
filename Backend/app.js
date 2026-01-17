@@ -15,7 +15,6 @@ app.use(express.json())
 
 app.use(cors({
     origin: function (origin, callback) {
-        // Allow local development or any of your Vercel deployment URLs
         if (!origin || origin.includes("vercel.app") || origin.includes("localhost")) {
             callback(null, true);
         } else {

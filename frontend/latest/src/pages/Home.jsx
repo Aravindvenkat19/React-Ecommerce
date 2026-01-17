@@ -10,17 +10,16 @@ const Home = () => {
     const apiUrl =
       import.meta.env.VITE_API_URL || "http://localhost:8000/api/v1";
 
-    fetch(`${apiUrl}/products?${searchParams}`).then((res) => res.json())
-    .then(res => {
-                // Only set products if the array exists in the response
-                if (res.products && Array.isArray(res.products)) {
-                    setProducts(res.products);
-                } else {
-                    // Fallback for different API response structures
-                    setProducts(res);
-                }
-            })
-            .catch(err => console.error("API Error:", err));
+    fetch(`${apiUrl}/products?${searchParams}`)
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.products && Array.isArray(res.products)) {
+          setProducts(res.products);
+        } else {
+          setProducts(res);
+        }
+      })
+      .catch((err) => console.error("API Error:", err));
   }, [searchParams]);
 
   return (
@@ -33,8 +32,15 @@ const Home = () => {
             products.map((product) => (
               <ProductCard key={product._id} product={product} />
             ))
+          ) : Array.isArray(products) && products.length === 0 ? (
+            // This part only shows if the API finished and found 0 products
+            <div className="col-12 text-center mt-5">
+              <h4 className="text-muted">No Products Found</h4>
+              <p>Try searching for a different keyword.</p>
+            </div>
           ) : (
-            <p>Loading products... (Check Console if this stays for long)</p>
+            // This part shows while the API is still fetching
+            <p>Loading products...</p>
           )}
         </div>
       </section>

@@ -4,11 +4,11 @@ import { useSearchParams } from "react-router-dom";
 
 const Home = () => {
     const [products, setProducts] = useState([]);
-    const [loading, setLoading] = useState(true); // Added to prevent early "No Products" message
+    const [loading, setLoading] = useState(true); 
     const [searchParams, setSearchParams] = useSearchParams();
 
     useEffect(() => {
-        setLoading(true); // Start loading whenever a search is performed
+        setLoading(true); 
         const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8000/api/v1';
 
         fetch(`${apiUrl}/products?${searchParams}`)
@@ -24,7 +24,7 @@ const Home = () => {
             })
             .catch(err => {
                 console.error("API Error:", err);
-                setLoading(false); // Stop loading even if there is an error
+                setLoading(false); 
             });
     }, [searchParams]);
 
